@@ -23,7 +23,7 @@ client.connect((err) => {
   const productsCollection = client.db("dailyProducts").collection("products");
   const ordersCollection = client.db("dailyProducts").collection("orders");
   console.log("database connected successfully");
-  
+
 
   app.get("/products", (req, res) => {
     productsCollection.find().toArray((err, items) => {
@@ -73,4 +73,4 @@ client.connect((err) => {
   });
 });
 
-app.listen(env.process.PORT || port);
+app.listen(process.env.PORT || port);
