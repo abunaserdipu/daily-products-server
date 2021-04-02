@@ -24,7 +24,6 @@ client.connect((err) => {
   const ordersCollection = client.db("dailyProducts").collection("orders");
   console.log("database connected successfully");
 
-
   app.get("/products", (req, res) => {
     productsCollection.find().toArray((err, items) => {
       res.send(items);
