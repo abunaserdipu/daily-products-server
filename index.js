@@ -32,9 +32,7 @@ client.connect((err) => {
 
   app.post("/addProduct", (req, res) => {
     const newProduct = req.body;
-    console.log("adding new product", newProduct);
     productsCollection.insertOne(newProduct).then((result) => {
-      console.log("inserted count", result.insertedCount);
       res.send(result.insertedCount > 0);
     });
   });
@@ -48,7 +46,6 @@ client.connect((err) => {
 
   app.post("/addOrder", (req, res) => {
     const order = req.body;
-    console.log("adding new product", order);
     ordersCollection.insertOne(order).then((result) => {
       res.send(result.insertedCount > 0);
     });
@@ -75,4 +72,4 @@ client.connect((err) => {
   });
 });
 
-app.listen(port);
+app.listen(env.process.PORT || port);
